@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Input Bill</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+    <div class="container">
+        <h3>Text Input Bill</h3>
+            <i>Enter the word sms or call, then press the calculate button</i>
+        <div><i>Calls cost R2.75 per call and SMS's R0.75 per SMS</i></div>
+        <br>
+        <div><i>If the total cost exceeds 30, it should state so</i></div>
+
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token%}
+            <input type="submit" class="btn btn-primary" value="Calculate">
+        </form>
+
+    </div>
+
+</body>
+</html>

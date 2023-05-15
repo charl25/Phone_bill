@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Bill</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+    <div class="container">
+        <h3>Calculate Bill</h3>
+        Enter a string with 'call' and or 'sms' separated by a comma, then press the calculate button to get the bill
+        <br> eg : sms,sms,sms,call
+        <div><i>Calls cost R2.75 per call and SMS's R0.75 per SMS</i></div>
+        <br>
+        <div><i>If the total cost exceeds 30, it should state so</i></div>
+
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token%}
+            <input type="submit" class="btn btn-primary" value="Calculate">
+        </form>
+
+    </div>
+
+</body>
+</html>
