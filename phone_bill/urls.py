@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from calculate_bill import views as cb_views
-# from text_input_bill import views as tib_views
+from text_input_bill import views as tib_views
 # from radio_button_bill import views as rbb_views
 # from bill_with_settings import views as bws_views
 
@@ -24,7 +24,7 @@ urlpatterns = [
     path('', cb_views.index, name='index'),
     path('admin/', admin.site.urls),
     path('calculate_bill/', cb_views.form_name_view, name='calculate_bill'),
-    # path('text_input_bill.html/', tib_views.form_name_view, name='text_input_bill.html'),
-    # path('radio_button_bill.html/', rbb_views.form_name_view, name='radio_button_bill.html'),
+    path('text_input_bill/', tib_views.form_name_view, name='text_input_bill'),
+    # path('radio_button_bill/', rbb_views.form_name_view, name='radio_button_bill'),
     # path('bill_with_settings/', bws_views.form_name_view, name='bill_with_settings'),
 ]

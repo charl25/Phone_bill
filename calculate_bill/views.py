@@ -11,24 +11,13 @@ def form_name_view(request):
 
     if request.method == 'POST':
         action = request.POST['text']
-        total = request.POST['total']
 
         my_bill = CalculateBill()
-        my_bill.calc(action, total)
+        my_bill.calc(action)
 
-        total = my_bill.total()
-
-        form.fields['total'].initial = f"R {total}"
+        form.fields['total'].initial = f"R {my_bill.total()}"
 
     return render(request, 'calculate_bill.html', {'form': form})
-
-
-def cutter(word):
-    new_word = ""
-    for char in word:
-        if char != "R" and char !=" ":
-            new_word += char
-    return new_word
 
 
 class CalculateBill:
@@ -38,17 +27,18 @@ class CalculateBill:
         self.smsCost = 0.75
         self.theTotal = 0
 
-    def calc(self, x, old_total):
+    def calc(self, x):
 
-        old_total = cutter(old_total)
+        bill_list = x.split(",")
 
-        if float(old_total)> self.theTotal:
-            self.theTotal = float(old_total)
-        x = x.strip()
-        if x == "call":
-            self.theTotal += self.callPrice
-        elif x == "sms":
-            self.theTotal += self.smsCost
+        for word in bill_list:
+            word = word.strip()
+            if word == "call":
+                self.theTotal += self.callPrice
+            elif word == "sms":
+                self.theTotal += self.smsCost
+            else:
+                continue
 
     def total(self):
         return self.theTotal
