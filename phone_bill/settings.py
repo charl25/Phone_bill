@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'calculate_bill',
-    # 'text_input_bill.html',
-    # 'radio_button_bill.html',
-    # 'bill_with_settings',
+    'text_input_bill',
+    'radio_button_bill',
+    'bill_with_settings',
 ]
 
 MIDDLEWARE = [

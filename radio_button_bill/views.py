@@ -5,12 +5,11 @@ from . import forms
 def index(request):
     return render(request, 'index.html')
 
-
 def form_name_view(request):
     form = forms.FormName()
 
     if request.method == 'POST':
-        action = request.POST['text']
+        action = request.POST['radio_button']
         call_total = request.POST['call_total']
         sms_total = request.POST['sms_total']
         total = request.POST['total']
@@ -26,7 +25,7 @@ def form_name_view(request):
         form.fields['sms_total'].initial = f"R {sms_total}"
         form.fields['total'].initial = f"R {total}"
 
-    return render(request, 'text_input_bill.html', {'form': form})
+    return render(request, 'radio_button_bill.html', {'form': form})
 
 
 def cutter(word):
@@ -76,3 +75,4 @@ class CalculateBill:
 
     def get_total(self):
         return self.theTotal
+
